@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+function App(props) {
+
+    const peopleData = [
+        { name: 'Rich', id:1},
+        { name: 'Joe', id:2 },
+        { name: 'Chris', id:3},
+        { name: 'Tauhida', id:4},
+        { name: 'Elias', id:5},
+        { name: 'Rita', id:6}
+    ];
+
+    // If you have an array as an input, you can map over it to
+    // create child components
+    const people = peopleData.map(person =>
+
+        <Person key={person.id} name={person.name} />
     );
-  }
-}
+
+    return (
+        <div className="personList">
+            <h3>Person List</h3>
+            {people}
+        </div>
+    );
+};
+
+function Person(props) {
+    return (
+        <div className="person">
+            {props.name}
+        </div>
+    );
+};
 
 export default App;
